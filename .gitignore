@@ -1,0 +1,9 @@
+Library/
+*.sln
+*csharp.sln
+*.unityproj
+*.pidb
+*.csproj
+*.userprefs
+.DS_Store
+*.sublime-workspace
