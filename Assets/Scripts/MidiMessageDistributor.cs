@@ -1,9 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class MidiReceived : IEvent
+{
+    public MidiMessage message { get; private set; }
+
+    public MidiReceived( MidiMessage msg )
+    {
+        message = msg;
+    }
+}
+
 public class MidiMessageDistributor : MonoBehaviour
 {
-    public GameObject[] targets;
     MidiReceiver receiver;
 
     void Start ()
@@ -13,12 +22,12 @@ public class MidiMessageDistributor : MonoBehaviour
 
     void Update ()
     {
-        while (!receiver.IsEmpty) {
+        while (!receiver.IsEmpty) 
+        {
             var message = receiver.PopMessage ();
-            if (message.status == 0x90) {
-                foreach (var go in targets) {
-                    go.SendMessage ("OnNoteOn", message);
-                }
+            if (message.status == 0x90 && message.data1 != 0 ) 
+            {
+                EventManager.instance.QueueEvent( new MidiReceived(message) );
             }
         }
     }

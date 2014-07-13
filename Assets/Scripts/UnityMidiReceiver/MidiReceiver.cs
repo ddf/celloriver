@@ -35,11 +35,6 @@ public class MidiReceiver : MonoBehaviour
 
     void Update ()
     {
-        if ( UnityMidiReceiver.ReadProcHit() )
-        {
-            print ( "MIDI read proc was hit!" );
-        }
-
         while (true) {
             var data = UnityMidiReceiver.DequeueIncomingData ();
             if (data == 0) {
