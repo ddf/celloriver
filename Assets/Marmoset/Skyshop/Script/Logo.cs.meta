@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 5586cbeaf11132c4f8d0bb69d2f0ab9c
+=======
+guid: 588c1aa4c2c5e49858c9a20a9cca6306
+>>>>>>> 686f49b83232e12eb37cc296c02488a6f0d5169c
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
