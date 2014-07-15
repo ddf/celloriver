@@ -8,7 +8,6 @@ public class ColorLerper : TriggerAction
 	public Color 		TargetColor = Color.white;
 	public float   		TotalTime = 0f;
 	public EasingType 	Easing    = EasingType.Linear;
-	public GameObject 	TargetObject;
 	public Renderer[] 	Renderers;
 	public int 		    MaterialIndex = 0;
 	
@@ -36,12 +35,6 @@ public class ColorLerper : TriggerAction
 	{
 		m_colorLerper.Update();
 
-		if ( TargetObject && TargetObject.active )
-		{
-			Color color = Color.Lerp( m_previousObjectColor, m_endColor, m_colorLerper.value );
-			TargetObject.renderer.SetColor( color, MaterialIndex );
-		}
-
 		for( int i = 0; i < Renderers.Length; ++i )
 		{
 			Renderer r = Renderers[i];
@@ -65,11 +58,6 @@ public class ColorLerper : TriggerAction
 		}
 		else 
 		{
-			if ( TargetObject && TargetObject.active )
-			{
-				m_previousObjectColor = TargetObject.renderer.GetColor( MaterialIndex );
-			}
-
 			for( int i = 0; i < Renderers.Length; ++i )
 			{
 				Renderer r = Renderers[i];
