@@ -1,4 +1,6 @@
 Library/
+Temp/
+Obj/
 *.sln
 *csharp.sln
 *.unityproj
