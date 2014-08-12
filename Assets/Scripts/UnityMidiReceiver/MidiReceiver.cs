@@ -43,13 +43,16 @@ public class MidiReceiver : MonoBehaviour
 
             var message = new MidiMessage (data);
 
-            messageQueue.Enqueue (message);
+            if ( message.data2 != 0 )
+            {
+                messageQueue.Enqueue (message);
 #if UNITY_EDITOR
-            messageHistory.Enqueue (message);
+                messageHistory.Enqueue (message);
 #endif
+            }
         }
 #if UNITY_EDITOR
-        while (messageHistory.Count > 8) {
+        while (messageHistory.Count > 64) {
             messageHistory.Dequeue ();
         }
 #endif
